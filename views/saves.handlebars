@@ -26,7 +26,10 @@
                   <h6 class='card-subtitle mb-2 text-muted'>{{newstime}}</h6>
                   <p class='card-text'>{{content}}</p>
                   <a href='/removesave/{{id}}' class='card-link' id={{id}}>Delete Saved Article</a>
-                  <a href='#' class='card-link'>Put Notes</a>
+                  <a href='#' class='card-comment' id=p{{id}}>Put Notes</a>
+                  <div class="comments" id=cp{{id}} style="display:none;">
+                    "TEST COMMENT"
+                  </div>
                 </div>
               </div>
   {{/each}}

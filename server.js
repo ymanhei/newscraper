@@ -30,7 +30,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
-//app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '/public')));
 
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -212,7 +212,8 @@ dbresults.forEach(function (elements){
     News.create(elements)
     .then(function(dbNews) {
       // If saved successfully, send the the new User document to the client
-      res.json(dbNews);
+      //res.json(dbNews);
+      
     })
     .catch(function(err) {
       // If an error occurs, send the error to the client
@@ -222,9 +223,10 @@ dbresults.forEach(function (elements){
 
 });
 })
-
-  
-
+setTimeout(function(){
+  // Move to a new location or you can do something else
+  res.redirect('/');
+}, 3000);
     
   });
 
