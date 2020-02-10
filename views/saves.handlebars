@@ -28,7 +28,17 @@
                   <a href='/removesave/{{id}}' class='card-link' id={{id}}>Delete Saved Article</a>
                   <a href='#' class='card-comment' id=p{{id}}>Put Notes</a>
                   <div class="comments" id=cp{{id}} style="display:none;">
-                    "TEST COMMENT"
+                    <div class="comtainer">
+                      "TEST COMMENT"
+                    </div>
+                    
+                    <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Comments:</label>
+                              <textarea class="form-control" id="com-text" rows="3"></textarea>
+                            </div>
+                            <input class="btn btn-primary" type="submit" id ="com-submit" value="Submit">
+                    </form>
                   </div>
                 </div>
               </div>

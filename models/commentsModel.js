@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var NewsSchema = new Schema({
+var CommentsSchema = new Schema({
   /* TODO:
    * Add four entries into our schema. These should be:
    *
@@ -18,24 +18,15 @@ var NewsSchema = new Schema({
    * TIP: The regex for checking if a string is an email is: /.+\@.+\..+/
    * Use that with the model attribute that checks for a valid match.
    * -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ */
-   headline: {type:String,trim:true,required:[true, 'Need title']},
-   content: {type:String,trim:true,required:[true, 'Need content']},
-   url:{type:String,trim:true,unique: true,required:[true, 'Need url']}, 
-   newstime:{type:Date,required:[true, 'Need news time']},
-   saved:{type:Boolean,default: false,required:[true, 'Need saved']},
-   comments: [
-    {
-      // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Note model
-      ref: "Comments"
-    }
-  ],
-   Createdtime: { type: Date, default: Date.now }
+   
+   newsid: {type:String,trim:true,required:[true, 'Need id']},
+   comment:{type:String,trim:true,required:[true, 'Need comment']}, 
+   createdtime:{type:Date,default: Date.now,required:[true, 'Need created time']}
+   
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var News = mongoose.model("News", NewsSchema);
+var Comments = mongoose.model("Comments", CommentsSchema);
 
 // Export the User model
-module.exports = News;
+module.exports = Comments;
