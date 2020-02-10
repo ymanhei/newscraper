@@ -37,7 +37,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsdb";
+var MONGODB_URI = "mongodb+srv://admin:admin@cluster0-eg6gd.mongodb.net/test?retryWrites=true&w=majority" || "mongodb://localhost/newsdb";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
