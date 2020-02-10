@@ -44,17 +44,25 @@ app.get("/", function(req, res) {
   app.get("/saved", function(req, res) {
     var r = [];
     News.find({saved:true})
-   .then(function(dbNews) {
-  
+    .populate("comments")
+    .then(function(dbNews) {
      // If all Notes are successfully found, send them back to the client
      dbNews.forEach(function(element){ 
-      //console.log("element"+element)
+
+      let comobarr = [];
+      element.comments.forEach(function(com) {
+        comobarr.push(com.comment); 
+//console.log(com.comment);
+      })
+
+      //console.log(comobarr);
       r.push({
         id: element.id,
         headline: element.headline,
         url: element.url,
         content:element.content,
-        newstime:element.newstime
+        newstime:element.newstime,
+        comments:comobarr
     }); 
   }); 
   //console.log("DATA:   " + r);
@@ -118,8 +126,9 @@ app.get("/", function(req, res) {
   /* -/-/-/-/-/-/-/-/-/-/-/-/- */
   
   app.get("/scrape", function(req, res) {
-     
+    console.log(dbresults);
   dbresults.forEach(function (elements){
+      //console.log(elements.headline);
     var query  = News.where({ url: elements.url });
     query.findOne(function (err, n) {
      if (err) return handleError(err);
@@ -145,12 +154,14 @@ app.get("/", function(req, res) {
       
     });
 
-    app.get("/postcomment", function(req, res) {
+    app.post("/postcomment", function(req, res) {
+        console.log(req.body);
             Comments.create(req.body)
+            
             .then(function(dbComments) {
               // If saved successfully, send the the new User document to the client
               //res.json(dbComments);
-              return News.findOneAndUpdate({}, { $push: { comments: dbComments._id } }, { new: true });
+              return News.findOneAndUpdate({_id:req.body.newsid}, { $push: { comments: dbComments._id } }, { new: true });
             })
             .then(function(dbComments) {
                 // If the User was updated successfully, send it back to the client

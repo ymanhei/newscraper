@@ -29,15 +29,18 @@
                   <a href='#' class='card-comment' id=p{{id}}>Put Notes</a>
                   <div class="comments" id=cp{{id}} style="display:none;">
                     <div class="comtainer">
-                      "TEST COMMENT"
+                      {{#each comments}}
+                         <li>{{this}}</li>
+                        <br>
+                      {{/each}}
                     </div>
                     
                     <form>
                             <div class="form-group">
                               <label for="exampleFormControlTextarea1">Comments:</label>
-                              <textarea class="form-control" id="com-text" rows="3"></textarea>
+                              <textarea class="form-control" id=t{{id}} rows="3"></textarea>
                             </div>
-                            <input class="btn btn-primary" type="submit" id ="com-submit" value="Submit">
+                            <input class="btn btn-primary" type="submit" id =st{{id}} value="Submit">
                     </form>
                   </div>
                 </div>

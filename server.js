@@ -90,10 +90,12 @@ axios.get(siteurl).then(function(response) {
   // Log the results once you've looped through each of the elements found with cheerio
   
   dbresults = results;
-  //console.log(dbresults);
+  //console.log("1:          "+dbresults);
+  require("./routes/html-routes.js")(app,dbresults);
+  //console.log("2:          "+dbresults);
 });
 
-require("./routes/html-routes.js")(app,dbresults);
+
 
 
 
