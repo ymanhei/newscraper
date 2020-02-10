@@ -18,7 +18,7 @@ var path = require("path");
 var moment = require("./public/js/moment.js");
 // Initialize Express
 var app = express();
-
+var PORT = process.env.PORT || 8080;
 // Database configuration
 //var databaseUrl = "scraper";
 //var collections = ["scrapedData"];
@@ -99,7 +99,7 @@ axios.get(siteurl).then(function(response) {
 
 
 
-// Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+// Listen on port 8080
+app.listen(PORT || 8080, function() {
+  console.log("App running on port " + PORT);
 });
