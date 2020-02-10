@@ -25,7 +25,8 @@ let cid = "c"+ $(this).attr("id");
     commentData.comment = commentInput.val().trim();
     commentData.newsid = id;
     alert("Comment posted!");
-    //location.reload();
+    location.reload();
+
 
 
 

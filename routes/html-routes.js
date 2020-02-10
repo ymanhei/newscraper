@@ -51,7 +51,7 @@ app.get("/", function(req, res) {
 
       let comobarr = [];
       element.comments.forEach(function(com) {
-        comobarr.push(com.comment); 
+        comobarr.push({comment:com.comment,id:com._id}); 
 //console.log(com.comment);
       })
 
@@ -172,4 +172,13 @@ app.get("/", function(req, res) {
               res.json(err);
             });  
     });
+
+    app.get("/removecomment/:id", function(req, res) {
+        console.log(req.params.id);
+        Comments.deleteOne({_id:req.params.id})
+        .then(
+          res.redirect('/saved')
+        )
+      });
+
 };

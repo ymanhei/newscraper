@@ -25,14 +25,15 @@
                   <a href={{url}}><h5 class='card-title'> {{headline}} </h5></a>
                   <h6 class='card-subtitle mb-2 text-muted'>{{newstime}}</h6>
                   <p class='card-text'>{{content}}</p>
-                  <a href='/removesave/{{id}}' class='card-link' id={{id}}>Delete Saved Article</a>
+                  <a href='/removesave/{{id}}' class='card-link' id={{id}}>Delete Saved Article</a> || 
                   <a href='#' class='card-comment' id=p{{id}}>Put Notes</a>
                   <div class="comments" id=cp{{id}} style="display:none;">
                     <div class="comtainer">
-                      {{#each comments}}
-                         <li>{{this}}</li>
+                      <ul>{{#each comments}}
+                         <li><a href="/removecomment/{{id}}">{{this.comment}}</a></li>
                         <br>
-                      {{/each}}
+                      {{/each}}</ul>
+                      
                     </div>
                     
                     <form>
