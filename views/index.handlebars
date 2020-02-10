@@ -1,0 +1,53 @@
+<nav class="navbar fixed-top navbar-white bg-dark border border-secondary border-bottom-5">
+        <div class="container">
+            <div id="headerbox">  
+              <h1 class="text-white">ABC News</h1>
+            </div>    
+            <h4 class="text-dark">
+                <a href="/saved">Saved Articles</a>
+            </h4>
+          </div>
+      </nav>
+    
+      
+        
+            <div class="container">
+                <div class="jumbotron bg-white border p-3">
+            <h2 class="display-8">About Me</h2>
+            
+            <hr class="my-4">
+                    
+            <div class="articles">
+
+  {{#each news}}
+    <div class='card' style='width: 100%;'>
+                <div class='card-body'>
+                  <a href={{url}}><h5 class='card-title'> {{headline}} </h5></a>
+                  <h6 class='card-subtitle mb-2 text-muted'>{{newstime}}</h6>
+                  <p class='card-text'>{{content}}</p>
+                  <a href='/putsave/{{id}}' class='card-link' id={{id}}>Save Article</a>
+                  
+                </div>
+              </div>
+  {{/each}}
+
+            </div>
+               
+          </div>
+        
+      </div>
+    
+  </div>
+</div>
+
+
+    <nav class="navbar fixed-bottom navbar-dark bg-primary border-top border-success">
+        <div class="container">
+
+              <h6 class="text-white align-center">Copyright@Shing Hei Chan</h6>
+ 
+          </div>
+      </nav>
+
+</body>
+
